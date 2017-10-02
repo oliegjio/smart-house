@@ -35,7 +35,7 @@ var wrongRequest = () => {
 
 var powerSocketOff = () => {
     requestPromise({
-        uri: 'http://192.168.0.140/off',
+        uri: 'http://192.168.0.140/offRelay',
         transform: (body) => {
             globalResponse.write(body)
             globalResponse.end()
@@ -45,7 +45,7 @@ var powerSocketOff = () => {
 
 var powerSocketOn = () => {
     requestPromise({
-        uri: 'http://192.168.0.140/on',
+        uri: 'http://192.168.0.140/onRelay',
         transform: (body) => {
             globalResponse.write(body)
             globalResponse.end()
