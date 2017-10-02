@@ -34,22 +34,22 @@ var wrongRequest = (response) => {
     response.end()
 }
 
-var powerSocketOff = () => {
+var powerSocketOff = (response) => {
     requestPromise({
         uri: 'http://192.168.0.140/offRelay',
-        transform: (body) => {
-            powerSocketResponse.write(body)
-            powerSocketResponse.end()
+        transform: (body, response) => {
+            response.write(body)
+            response.end()
         }
     })
 }
 
-var powerSocketOn = () => {
+var powerSocketOn = (response) => {
     requestPromise({
         uri: 'http://192.168.0.140/onRelay',
-        transform: (body) => {
-            powerSocketResponse.write(body)
-            powerSocketResponse.end()
+        transform: (body, response) => {
+            response.write(body)
+            response.end()
         }
     })
 }
@@ -69,13 +69,13 @@ const requestHandler = (request, response) => {
             break
 
         case '/power-socket-off':
-            powerSocketResponse = response
-            powerSocketOff()
+            // powerSocketResponse = response
+            powerSocketOff(response)
             break
 
         case '/power-socket-on':
-            powerSocketResponse = response
-            powerSocketOn()
+            // powerSocketResponse = response
+            powerSocketOn(response)
             break
 
         default:
