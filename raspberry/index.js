@@ -50,7 +50,7 @@ var powerSocketOn = () => {
     })
 }
 
-const requestHandler = (request, globalResponse) => {
+const requestHandler = (request, response) => {
     response.setHeader("Access-Control-Allow-Origin", "*")
     globalResponse = response
 
