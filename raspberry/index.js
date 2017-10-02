@@ -23,8 +23,6 @@ var sendDataNow = (globalResponse) => {
 var sendFakeData = (response) => {
     fakeData = `${rnd()} ${rnd()}\n`
 
-    console.log(fakeData)
-
     globalResponse.write(fakeData)
 }
 
@@ -33,7 +31,8 @@ const requestHandler = (request, response) => {
     globalResponse = response
     switch (request.url) {
         case '/ping':
-            sendDataNow(globalResponse)
+            console.log('ping')
+            // sendDataNow(globalResponse)
             break
         case '/fake-ping':
             sendFakeData(response)

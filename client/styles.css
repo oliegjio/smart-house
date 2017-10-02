@@ -2,6 +2,7 @@ html, body {
     margin: 0;
     padding: 0;
     background-color: #659EBC;
+    color: #444444;
 }
 
 .t-and-h-section {
@@ -17,7 +18,6 @@ html, body {
     display: inline-block;
     margin-top: 15px;
     margin-left: 25px;
-    color: #444444;
     font-size: 18px;
 }
 
@@ -31,4 +31,27 @@ html, body {
 
 .t-and-h-section__h-canvas {
     margin-top: 25px;
+}
+
+.power-socket-section {
+    border-radius: 10px;
+    margin: 30px auto 30px auto;
+    width: 900px;
+    height: 38px;
+    background-color: white;
+    padding: 20px;
+}
+
+.power-socket-section__label {
+    font-size: 25px;
+}
+
+.power-socket-section__button {
+    border: solid 2px #659EBC;
+    border-radius: 10px;
+    margin-left: 10px;
+    font-size: 18px;
+    padding: 5px 15px;
+    background-color: lightgreen;
+    outline: none;
 }
