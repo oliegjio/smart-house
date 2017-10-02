@@ -1,59 +1,47 @@
 const http = require('http')
-const SerialPort = require('serialport')
-const stringDecoder = require('string_decoder')
-// const sqlite = require('sqlite3')
+const requestPromise = require('request-promise')
 const port = 8000
 
-const decoder = new stringDecoder.StringDecoder('utf8')
-
-// var db = new sqlite.Database('./data.db')
-// db.run('CREATE TABLE IF NOT EXISTS t-and-h (date DATETIME, t, h)')
-// db.on('error', (error) => {
-//     console.log(error)
-// })
-
-var sPort = new SerialPort('/dev/ttyUSB0', {baudRate: 9600})
+var data
+var globalResponse
 
 var rnd = () => {
-    return Math.floor(Math.random() * (100 - 50) + 50) // (to - from) + from
+    return Math.floor(Math.random() * (100 - 50) + 50)
 }
 
-var newData
-
-sPort.on('data', (data) => {
-    // temperature humidity
-    newData = decoder.write(data).replace(/(\r\n|\n|\r)/gm,'')
-
-    console.log(newData)
-})
-
-var getTH = () => {
-    sPort.write('0', function(error) {
-      if (error) {
-        return console.log(error.message)
-      }
+var sendDataNow = (globalResponse) => {
+    requestPromise('http://192.168.0.141:8000/', (error, response, body) => {
+        data = body
+    })
+    .then((globalResponse) => {
+        globalResponse.setHeader("Access-Control-Allow-Origin", "*");
+        console.log(data)
+        globalResponse.write(data)
     })
 }
-setInterval(getTH, 1000)
 
-sPort.on('error', (error) => {
-    console.log(error)
-})
+var sendFakeData = (response) => {
+    fakeData = `${rnd()} ${rnd()}\n`
 
-var sendData = (response) => {
-    response.setHeader("Access-Control-Allow-Origin", "*")
-    response.write(newData)
+    console.log(fakeData)
+
+    globalResponse.write(fakeData)
 }
 
 const requestHandler = (request, response) => {
+    response.setHeader("Access-Control-Allow-Origin", "*");
+    globalResponse = response
     switch (request.url) {
         case '/ping':
-            sendData(response)
+            sendDataNow(globalResponse)
+            break
+        case '/fake-ping':
+            sendFakeData(response)
             break
         default:
             response.write('Wrong Request!')
     }
-    response.end()
+    globalResponse.end()
 }
 
 const server = http.createServer(requestHandler)
