@@ -5,7 +5,8 @@ const port = 8000
 var globalResponse
 
 var rnd = () => {
-    return Math.floor(Math.random() * (100 - 50) + 50)
+    // ((max - min) + min)
+    return Math.floor(Math.random() * (100 - (-50)) + (-50))
 }
 
 var ping = () => {
@@ -18,7 +19,7 @@ var ping = () => {
 
             if(temperature >= 100 || temperature <= -100 ||
                humidity >= 100 || humidity <= -100) {
-                globalResponse(`${rnd()} ${rnd()}`)
+                globalResponse.write(`${rnd()} ${rnd()}`)
                 globalResponse.end()
                 return
             }
