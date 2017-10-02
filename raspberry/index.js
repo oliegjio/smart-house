@@ -2,45 +2,82 @@ const http = require('http')
 const requestPromise = require('request-promise')
 const port = 8000
 
-var data
 var globalResponse
 
 var rnd = () => {
     return Math.floor(Math.random() * (100 - 50) + 50)
 }
 
-var sendDataNow = (globalResponse) => {
-    requestPromise('http://192.168.0.141:8000/', (error, response, body) => {
-        data = body
+var ping = () => {
+    requestPromise({
+        uri: 'http://192.168.0.140/',
+        transform: (body) => {
+            globalResponse.write(body)
+            globalResponse.end()
+        }
     })
-    .then((globalResponse) => {
-        globalResponse.setHeader("Access-Control-Allow-Origin", "*");
-        console.log(data)
-        globalResponse.write(data)
+    .catch((error) => {
+        console.log(error)
     })
 }
 
-var sendFakeData = (response) => {
+var fakePing = () => {
     fakeData = `${rnd()} ${rnd()}\n`
 
     globalResponse.write(fakeData)
+    globalResponse.end()
+}
+
+var wrongRequest = () => {
+    globalResponse.write('Wrong Request!')
+    globalResponse.end()
+}
+
+var powerSocketOff = () => {
+    requestPromise({
+        uri: 'http://192.168.0.140/off',
+        transform: (body) => {
+            globalResponse.write(body)
+            globalResponse.end()
+        }
+    })
+}
+
+var powerSocketOn = () => {
+    requestPromise({
+        uri: 'http://192.168.0.140/on',
+        transform: (body) => {
+            globalResponse.write(body)
+            globalResponse.end()
+        }
+    })
 }
 
 const requestHandler = (request, response) => {
-    response.setHeader("Access-Control-Allow-Origin", "*");
+    response.setHeader("Access-Control-Allow-Origin", "*")
+
     globalResponse = response
+
     switch (request.url) {
         case '/ping':
-            console.log('ping')
-            // sendDataNow(globalResponse)
+            ping()
             break
+
         case '/fake-ping':
-            sendFakeData(response)
+            fakePing()
             break
+
+        case '/power-socket-off':
+            powerSocketOff()
+            break
+
+        case '/power-socket-on':
+            powerSocketOn()
+            break
+
         default:
-            response.write('Wrong Request!')
+            wrongRequest()
     }
-    globalResponse.end()
 }
 
 const server = http.createServer(requestHandler)
