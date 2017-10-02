@@ -2,6 +2,7 @@ const http = require('http')
 const requestPromise = require('request-promise')
 const port = 8000
 
+var pingResponse
 var globalResponse
 
 var rnd = () => {
@@ -55,8 +56,6 @@ var powerSocketOn = () => {
 
 const requestHandler = (request, response) => {
     response.setHeader("Access-Control-Allow-Origin", "*")
-
-    globalResponse = response
 
     switch (request.url) {
         case '/ping':
