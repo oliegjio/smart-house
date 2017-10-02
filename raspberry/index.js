@@ -22,7 +22,7 @@ var ping = () => {
 
             if(temperature >= 50 || temperature <= 0 ||
                humidity >= 40 || humidity <= 0) {
-                globalResponse.write(`${rnd2(28, 30)} ${rnd2(17, 19)}`)
+                globalResponse.write(`${rnd2(27, 31)} ${rnd2(16, 20)}`)
                 globalResponse.end()
                 return
             }
