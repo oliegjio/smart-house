@@ -2,77 +2,77 @@ const http = require('http')
 const requestPromise = require('request-promise')
 const port = 8000
 
+var globalResponse
+
 var rnd = () => {
     return Math.floor(Math.random() * (100 - 50) + 50)
 }
 
-var ping = (response) => {
+var ping = () => {
     requestPromise({
         uri: 'http://192.168.0.140/',
-        transform: (body, response) => {
-            response.write(body)
-            response.end()
+        transform: (body) => {
+            globalResponse.write(body)
+            globalResponse.end()
         }
-    })
-    .catch((error) => {
-        console.log(error)
     })
 }
 
-var fakePing = (response) => {
+var fakePing = () => {
     fakeData = `${rnd()} ${rnd()}\n`
 
-    response.write(fakeData)
-    response.end()
+    globalResponse.write(fakeData)
+    globalResponse.end()
 }
 
-var wrongRequest = (response) => {
-    response.write('Wrong Request!')
-    response.end()
+var wrongRequest = (globalResponse) => {
+    globalResponse.write('Wrong Request!')
+    globalResponse.end()
 }
 
-var powerSocketOff = (response) => {
+var powerSocketOff = () => {
     requestPromise({
         uri: 'http://192.168.0.140/offRelay',
-        transform: (body, response) => {
-            response.write(body)
-            response.end()
+        transform: (body) => {
+            globalResponse.write(body)
+            globalResponse.end()
         }
     })
 }
 
-var powerSocketOn = (response) => {
+var powerSocketOn = () => {
     requestPromise({
         uri: 'http://192.168.0.140/onRelay',
-        transform: (body, response) => {
-            response.write(body)
-            response.end()
+        transform: (body) => {
+            globalResponse.write(body)
+            globalResponse.end()
         }
     })
 }
 
-const requestHandler = (request, response) => {
+const requestHandler = (request, globalResponse) => {
     response.setHeader("Access-Control-Allow-Origin", "*")
+    globalResponse = response
 
     switch (request.url) {
         case '/ping':
-            ping(response)
+            ping()
             break
 
         case '/fake-ping':
-            fakePing(response)
+            fakePing()
             break
 
         case '/power-socket-off':
-            powerSocketOff(response)
+            powerSocketOff()
             break
 
         case '/power-socket-on':
-            powerSocketOn(response)
+            powerSocketOn()
             break
 
         default:
-            wrongRequest(response)
+            wrongRequest()
     }
 }
 
