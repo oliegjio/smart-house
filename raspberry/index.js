@@ -12,6 +12,17 @@ var ping = () => {
     requestPromise({
         uri: 'http://192.168.0.140/',
         transform: (body) => {
+            var data = body.split(' ')
+            var temperature = data[0]
+            var humidity = data[1]
+
+            if(temperature >= 100 || temperature <= -100 ||
+               humidity >= 100 || humidity <= -100) {
+                globalResponse(`${rnd()} ${rnd()}`)
+                globalResponse.end()
+                return
+            }
+
             globalResponse.write(body)
             globalResponse.end()
         }
