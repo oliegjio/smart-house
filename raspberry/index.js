@@ -3,7 +3,7 @@ const requestPromise = require('request-promise')
 const port = 8000
 
 var pingResponse
-var globalResponse
+var powerSocketResponse
 
 var rnd = () => {
     return Math.floor(Math.random() * (100 - 50) + 50)
@@ -13,8 +13,8 @@ var ping = () => {
     requestPromise({
         uri: 'http://192.168.0.140/',
         transform: (body) => {
-            globalResponse.write(body)
-            globalResponse.end()
+            pingResponse.write(body)
+            pingResponse.end()
         }
     })
     .catch((error) => {
@@ -25,21 +25,21 @@ var ping = () => {
 var fakePing = () => {
     fakeData = `${rnd()} ${rnd()}\n`
 
-    globalResponse.write(fakeData)
-    globalResponse.end()
+    pingResponse.write(fakeData)
+    pingResponse.end()
 }
 
-var wrongRequest = () => {
-    globalResponse.write('Wrong Request!')
-    globalResponse.end()
+var wrongRequest = (response) => {
+    response.write('Wrong Request!')
+    response.end()
 }
 
 var powerSocketOff = () => {
     requestPromise({
         uri: 'http://192.168.0.140/offRelay',
         transform: (body) => {
-            globalResponse.write(body)
-            globalResponse.end()
+            powerSocketResponse.write(body)
+            powerSocketResponse.end()
         }
     })
 }
@@ -48,8 +48,8 @@ var powerSocketOn = () => {
     requestPromise({
         uri: 'http://192.168.0.140/onRelay',
         transform: (body) => {
-            globalResponse.write(body)
-            globalResponse.end()
+            powerSocketResponse.write(body)
+            powerSocketResponse.end()
         }
     })
 }
@@ -59,23 +59,27 @@ const requestHandler = (request, response) => {
 
     switch (request.url) {
         case '/ping':
+            pingResponse = response
             ping()
             break
 
         case '/fake-ping':
+            pingResponse = response
             fakePing()
             break
 
         case '/power-socket-off':
+            powerSocketResponse = response
             powerSocketOff()
             break
 
         case '/power-socket-on':
+            powerSocketResponse = response
             powerSocketOn()
             break
 
         default:
-            wrongRequest()
+            wrongRequest(response)
     }
 }
 
