@@ -2,7 +2,7 @@ var temperature, humidity;
 
 setInterval(function() {
     $.ajax({
-        url: 'http://192.168.0.148:8000/ping'
+        url: 'http://192.168.0.183:8000/ping'
     })
     .done(function(data) {
         var newData = data.split(' ');
