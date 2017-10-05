@@ -20,6 +20,9 @@ var tChart = new Chart(tContext, {
             backgroundColor: ['rgba(200, 0, 0, .15)'],
             borderColor: ['rgba(255, 0, 0, .3)']
         }]
+    },
+    options: {
+        responsive: true
     }
 });
 
@@ -33,5 +36,8 @@ var hChart = new Chart(hContext, {
             backgroundColor: ['rgba(0, 0, 200, .15)'],
             borderColor: ['rgba(0, 0, 255, .3)']
         }]
+    },
+    options: {
+        responsive: true
     }
 });
