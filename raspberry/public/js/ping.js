@@ -57,5 +57,5 @@ setInterval(function() {
     .fail(function(error) {
         console.log(error);
     });
-}, 1000);
+}, 1000 );
     

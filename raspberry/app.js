@@ -18,19 +18,10 @@ var crossOrigin = (request, response, next) => {
 }
 app.use(crossOrigin)
 
-var fakePowerSocketOn = () => {
-    globalResponse.write('true')
-    globalResponse.end()
-}
-
-var fakePowerSocketOff = () => {
-    globalResponse.write('true')
-    globalResponse.end()
-}
-
 require('./routes/fakePing').init(app)
 require('./routes/fakePowerSocketOn').init(app)
 require('./routes/fakePowerSocketOff').init(app)
+require('./routes/client').init(app)
 
 app.listen(port, (error) => {
     if (error) {
