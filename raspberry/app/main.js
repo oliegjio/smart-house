@@ -7,8 +7,8 @@ const requestPromise = require('request-promise')
 const port = 8000
 const app = express()
 
+app.use(require('../middlewares/crossOrigin').init)
 app.use(express.static(path.join(__dirname, '..', 'public')))
-app.use(require('../middlewares/crossOrigin').crossOrigin)
 
 app.engine('ejs', require('ejs').renderFile)
 

@@ -1,6 +1,6 @@
-var crossOrigin = (request, response, next) => {
+var init = (request, response, next) => {
     response.set('Access-Control-Allow-Origin', '*')
     next()
 }
 
-module.exports.crossOrigin = crossOrigin
+module.exports.init = init
