@@ -1,4 +1,4 @@
-var rnd = require('../helpers').rnd
+var rnd = require('../app/helpers').rnd
 
 var init = (app) => {
     app.get('/fake-ping', (request, response) => {

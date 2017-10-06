@@ -1,6 +1,6 @@
-var powerSocketButton = document.getElementsByClassName('power-socket-section__button')[0];
+var powerSocketButton = document.getElementsByClassName('power-socket-section__button')[0]
 
-var isPowerSocketActive = true;
+var isPowerSocketActive = true
 
 powerSocketButton.onclick = function(event) {
     
@@ -10,16 +10,16 @@ powerSocketButton.onclick = function(event) {
             url: 'http://localhost:8000/fake-power-socket-off'
         })
         .done(function(data) {
-            if (data != 'true') return;
+            if (data != 'true') return
         })
         .fail(function(error) {
-            console.log(error);
+            console.log(error)
         });
 
-        isPowerSocketActive = false;
+        isPowerSocketActive = false
         
-        powerSocketButton.style.backgroundColor = 'lightcoral';
-        powerSocketButton.value = 'Off';
+        powerSocketButton.style.backgroundColor = 'lightcoral'
+        powerSocketButton.value = 'Off'
         
     } else {
         
@@ -27,15 +27,15 @@ powerSocketButton.onclick = function(event) {
             url: 'http://localhost:8000/fake-power-socket-on'
         })
         .done(function(data) {
-            if (data != 'true') return;
+            if (data != 'true') return
         })
         .fail(function(error) {
-            console.log(error);
+            console.log(error)
         });
 
-        isPowerSocketActive = true;
+        isPowerSocketActive = true
         
-        powerSocketButton.style.backgroundColor = 'lightgreen';
-        powerSocketButton.value = 'On';
+        powerSocketButton.style.backgroundColor = 'lightgreen'
+        powerSocketButton.value = 'On'
     }
 }

@@ -1,0 +1,12 @@
+.people-section {
+    border-radius: 10px;
+    width: 440px;
+    height: 38px;
+    background-color: white;
+    padding: 20px;
+    margin-left: 15px;
+}
+
+.people-section__label {
+    font-size: 25px;
+}

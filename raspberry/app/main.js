@@ -7,8 +7,8 @@ const requestPromise = require('request-promise')
 const port = 8000
 const app = express()
 
-app.use(express.static(path.join(__dirname, 'public')))
-app.set('views', path.join(__dirname, 'public', 'views'))
+app.use(express.static(path.join(__dirname, '..', 'public')))
+app.set('views', path.join(__dirname, '..', 'public', 'views'))
 app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'html')
 
@@ -18,10 +18,10 @@ var crossOrigin = (request, response, next) => {
 }
 app.use(crossOrigin)
 
-require('./routes/fakePing').init(app)
-require('./routes/fakePowerSocketOn').init(app)
-require('./routes/fakePowerSocketOff').init(app)
-require('./routes/client').init(app)
+require('../routes/fakePing').init(app)
+require('../routes/fakePowerSocketOn').init(app)
+require('../routes/fakePowerSocketOff').init(app)
+require('../routes/client').init(app)
 
 app.listen(port, (error) => {
     if (error) {
