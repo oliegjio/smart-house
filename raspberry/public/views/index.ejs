@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Smart House</title>
+        <link rel='stylesheet' href='../css/main.css'>
+        <link rel='stylesheet' href='../css/power-socket-people-wrapper.css'>
+    </head>
+    <body>
+        <div class='power-socket-people-wrapper'>
+            <% include power-socket-section.ejs %>
+            <% include people-section.ejs %>
+        </div>
+        <% include t-and-h-section.ejs %>
+
+        <script src='../node_modules/jquery/dist/jquery.min.js'></script>
+        <script src='../node_modules/chart.js/dist/Chart.min.js'></script>
+        <script src='../js/charts.js'></script>
+        <script src='../js/power-socket.js'></script>
+        <script src='../js/ping.js'></script>
+    </body>
+</html>

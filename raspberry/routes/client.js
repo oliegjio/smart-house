@@ -1,6 +1,6 @@
 var init = (app) => {
     app.get('/client', (request, response) => {
-        response.render('index.html')
+        response.render('index.ejs')
     })
 }
 

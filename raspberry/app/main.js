@@ -8,15 +8,12 @@ const port = 8000
 const app = express()
 
 app.use(express.static(path.join(__dirname, '..', 'public')))
-app.set('views', path.join(__dirname, '..', 'public', 'views'))
-app.engine('html', require('ejs').renderFile)
-app.set('view engine', 'html')
+app.use(require('../middlewares/crossOrigin').crossOrigin)
 
-var crossOrigin = (request, response, next) => {
-    response.set('Access-Control-Allow-Origin', '*')
-    next()
-}
-app.use(crossOrigin)
+app.engine('ejs', require('ejs').renderFile)
+
+app.set('views', path.join(__dirname, '..', 'public', 'views'))
+app.set('view engine', 'html')
 
 require('../routes/fakePing').init(app)
 require('../routes/fakePowerSocketOn').init(app)
