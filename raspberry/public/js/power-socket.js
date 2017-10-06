@@ -7,7 +7,7 @@ powerSocketButton.onclick = function(event) {
     if (isPowerSocketActive) {
         
         $.ajax({
-            url: 'http://192.168.0.148:8000/fake-power-socket-off'
+            url: 'http://localhost:8000/fake-power-socket-off'
         })
         .done(function(data) {
             if (data != 'true') return;
@@ -24,7 +24,7 @@ powerSocketButton.onclick = function(event) {
     } else {
         
         $.ajax({
-            url: 'http://192.168.0.148:8000/fake-power-socket-on'
+            url: 'http://localhost:8000/fake-power-socket-on'
         })
         .done(function(data) {
             if (data != 'true') return;

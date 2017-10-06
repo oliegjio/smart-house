@@ -42,7 +42,7 @@ var updatePeople = function() {
 
 setInterval(function() {
     $.ajax({
-        url: 'http://192.168.0.148:8000/fake-ping'
+        url: 'http://localhost:8000/fake-ping'
     })
     .done(function(response) {
         var data = response.split(' ');
