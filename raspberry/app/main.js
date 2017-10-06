@@ -1,8 +1,8 @@
 const express = require('express')
 const path = require('path')
-const bodyParser = require('body-parser')
-const request = require('request')
-const requestPromise = require('request-promise')
+// const bodyParser = require('body-parser')
+// const request = require('request')
+// const requestPromise = require('request-promise')
 
 const port = 8000
 const app = express()
@@ -21,10 +21,10 @@ require('../routes/fakePowerSocketOff').init(app)
 require('../routes/client').init(app)
 
 app.listen(port, (error) => {
-    if (error) {
-        console.error(error)
-    }
-    console.log('Listening to localhost:8000')
+  if (error) {
+    console.error(error)
+  }
+  console.log('Listening to localhost:8000')
 })
 
 module.exports.app = app
