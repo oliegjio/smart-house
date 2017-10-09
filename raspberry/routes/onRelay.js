@@ -13,6 +13,7 @@ var init = (app) => {
         uri: 'http://192.168.0.2/onRelay'
       })
       .then((body) => {
+        console.log(body)
         checkOnRelayResponse.send(body)
       })
       .catch((error) => {

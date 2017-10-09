@@ -45,10 +45,10 @@ var pingTandH = function() {
 
       var data = response.split(' ')
 
-        temperature = data[0]
-        humidity = data[1]
+      temperature = data[0]
+      humidity = data[1]
 
-        updateCharts()
+      updateCharts()
     })
     .fail(function(error) {
         console.log(error)

@@ -13,6 +13,7 @@ var init = (app) => {
         uri: 'http://192.168.0.4/checkfire'
       })
       .then((body) => {
+        console.log(body)
         checkFireResponse.send(body)
       })
       .catch((error) => {

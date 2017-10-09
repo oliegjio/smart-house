@@ -13,6 +13,7 @@ var init = (app) => {
         uri: 'http://192.168.0.2/offRelay'
       })
       .then((body) => {
+        console.log(body)
         checkOffRelayResponse.send(body)
       })
       .catch((error) => {

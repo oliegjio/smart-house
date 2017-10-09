@@ -10,9 +10,10 @@ var init = (app) => {
     try {
       requestPromise({
         method: 'GET',
-        uri: 'http://192.168.0.3/checkWater'
+        uri: 'http://192.168.0.3/getWater'
       })
       .then((body) => {
+        console.log(body)
         checkWaterResponse.send(body)
       })
       .catch((error) => {

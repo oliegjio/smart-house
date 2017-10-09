@@ -13,6 +13,7 @@ var init = (app) => {
         uri: 'http://192.168.0.6/checkTandH'
       })
       .then((body) => {
+        console.log(body)
         checkTandHResponse.send(body)
       })
       .catch((error) => {
