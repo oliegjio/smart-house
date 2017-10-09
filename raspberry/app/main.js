@@ -15,9 +15,12 @@ app.engine('ejs', require('ejs').renderFile)
 app.set('views', path.join(__dirname, '..', 'public', 'views'))
 app.set('view engine', 'html')
 
-require('../routes/fakePing').init(app)
-require('../routes/fakePowerSocketOn').init(app)
-require('../routes/fakePowerSocketOff').init(app)
+require('../routes/checkTandH').init(app)
+require('../routes/onRelay').init(app)
+require('../routes/offRelay').init(app)
+require('../routes/checkLight').init(app)
+require('../routes/checkFire').init(app)
+require('../routes/checkWater').init(app)
 require('../routes/client').init(app)
 
 app.listen(port, (error) => {

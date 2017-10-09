@@ -2,19 +2,29 @@
     <head>
         <title>Smart House</title>
         <link rel='stylesheet' href='../css/main.css'>
-        <link rel='stylesheet' href='../css/power-socket-people-wrapper.css'>
+        <link rel='stylesheet' href='../css/two-columns-wrapper.css'>
     </head>
     <body>
-        <div class='power-socket-people-wrapper'>
-            <% include power-socket-section.ejs %>
-            <% include people-section.ejs %>
+        <div class='two-columns-wrapper'>
+            <% include sections/power-socket-section.ejs %>
+            <% include sections/light-section.ejs %>
         </div>
-        <% include t-and-h-section.ejs %>
+        <% include sections/t-and-h-section.ejs %>
+
+        <div class='two-columns-wrapper'>
+          <% include sections/water-section.ejs %>
+          <% include sections/fire-section.ejs %>
+        </div>
 
         <script src='../node_modules/jquery/dist/jquery.min.js'></script>
         <script src='../node_modules/chart.js/dist/Chart.min.js'></script>
+        <script src="../node_modules/bootbox/bootbox.min.js"></script>
+        <script src='../js/temperature-and-humidity.js'></script>
         <script src='../js/charts.js'></script>
         <script src='../js/power-socket.js'></script>
-        <script src='../js/ping.js'></script>
+        <script src='../js/fire-detector.js'></script>
+        <script src='../js/light-detector.js'></script>
+        <script src='../js/water-detector.js'></script>
+        <script src='../js/composite-request.js'></script>
     </body>
 </html>

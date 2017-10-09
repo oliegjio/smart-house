@@ -3,11 +3,11 @@ var powerSocketButton = document.getElementsByClassName('power-socket-section__b
 var isPowerSocketActive = true
 
 powerSocketButton.onclick = function(event) {
-    
+
     if (isPowerSocketActive) {
-        
+
         $.ajax({
-            url: 'http://localhost:8000/fake-power-socket-off'
+            url: 'http://192.168.0.1:8000/offRelay'
         })
         .done(function(data) {
             if (data != 'true') return
@@ -17,14 +17,14 @@ powerSocketButton.onclick = function(event) {
         });
 
         isPowerSocketActive = false
-        
+
         powerSocketButton.style.backgroundColor = 'lightcoral'
         powerSocketButton.value = 'Off'
-        
+
     } else {
-        
+
         $.ajax({
-            url: 'http://localhost:8000/fake-power-socket-on'
+            url: 'http://192.168.0.1:8000/onRelay'
         })
         .done(function(data) {
             if (data != 'true') return
@@ -34,7 +34,7 @@ powerSocketButton.onclick = function(event) {
         });
 
         isPowerSocketActive = true
-        
+
         powerSocketButton.style.backgroundColor = 'lightgreen'
         powerSocketButton.value = 'On'
     }

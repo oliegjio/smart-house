@@ -1,5 +1,5 @@
 var init = (app) => {
-  app.get('http://192.168.0.140/offRelay', (request, response) => {
+  app.get('http://192.168.0.4/checkFire', (request, response) => {
     response.send(response)
   })
 }

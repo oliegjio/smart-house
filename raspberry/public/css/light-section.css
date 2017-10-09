@@ -1,0 +1,33 @@
+.light-section {
+    border-radius: 10px;
+    background-color: white;
+    height: 38px;
+    margin-left: 15px;
+    padding: 20px;
+    width: 440px;
+    display: flex;
+}
+
+.light-section__label {
+    font-size: 25px;
+    display: block;
+    width: 130px;
+}
+
+.light-section__progress-bar {
+  width: 320px;
+  background-color: lightgrey;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.light-section__progress {
+  width: 1%;
+  height: 100px;
+  background-color: orange;
+  text-align: center;
+}
+
+.light-section__value {
+  font-size: 22px;
+}
