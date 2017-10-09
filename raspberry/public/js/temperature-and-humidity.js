@@ -39,7 +39,11 @@ var pingTandH = function() {
         url: 'http://192.168.0.1:8000/checkTandH'
     })
     .done(function(response) {
-        var data = response.split(' ')
+      console.log('T and H: ' + response)
+
+      if (response == '') return
+
+      var data = response.split(' ')
 
         temperature = data[0]
         humidity = data[1]

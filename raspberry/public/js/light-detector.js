@@ -13,7 +13,11 @@ var pingLightDetector = function() {
         url: 'http://192.168.0.1:8000/checkLight'
     })
     .done(function(response) {
-        lightStatus = response
+      console.log('Light: ' + response)
+
+      if (response == '') return
+
+      lightStatus = response
 
         updateLightProgress(lightStatus)
     })

@@ -22,6 +22,10 @@ var pingFireDetector = function() {
         url: 'http://192.168.0.1:8000/checkFire'
     })
     .done(function(response) {
+        console.log('Fire: ' + response)
+
+        if (response == '') return
+
         fireStatus = response
 
         updateFireLabel(fireStatus)

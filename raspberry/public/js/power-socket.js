@@ -10,32 +10,35 @@ powerSocketButton.onclick = function(event) {
             url: 'http://192.168.0.1:8000/offRelay'
         })
         .done(function(data) {
-            if (data != 'true') return
+          console.log('Power socket: ' + data)
+
+          if (data != 'true') return
+
+          isPowerSocketActive = false
+
+          powerSocketButton.style.backgroundColor = 'lightcoral'
+          powerSocketButton.value = 'Off'
         })
         .fail(function(error) {
             console.log(error)
         });
-
-        isPowerSocketActive = false
-
-        powerSocketButton.style.backgroundColor = 'lightcoral'
-        powerSocketButton.value = 'Off'
-
     } else {
 
         $.ajax({
             url: 'http://192.168.0.1:8000/onRelay'
         })
         .done(function(data) {
-            if (data != 'true') return
+          console.log('Power socket: ' + data)
+
+          if (data != 'true') return
+
+          isPowerSocketActive = true
+
+          powerSocketButton.style.backgroundColor = 'lightgreen'
+          powerSocketButton.value = 'On'
         })
         .fail(function(error) {
             console.log(error)
         });
-
-        isPowerSocketActive = true
-
-        powerSocketButton.style.backgroundColor = 'lightgreen'
-        powerSocketButton.value = 'On'
     }
 }

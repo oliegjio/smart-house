@@ -13,7 +13,11 @@ var pingWaterDetector = function() {
         url: 'http://192.168.0.1:8000/checkLight'
     })
     .done(function(response) {
-        waterStatus = response
+      console.log('Water: ' + response)
+
+      if (response == '') return
+
+      waterStatus = response
 
         updateLightProgress(waterStatus)
     })
