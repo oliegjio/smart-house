@@ -8,9 +8,9 @@ function updateLightProgress(value) {
     lightSectionValue.innerHTML = value + '%'
 }
 
-var pingLiteDetector = function() {
+var pingLightDetector = function() {
     $.ajax({
-        url: 'http://192.168.0.5/checkLight'
+        url: 'http://192.168.0.1:8000/checkLight'
     })
     .done(function(response) {
         lightStatus = response
@@ -22,4 +22,4 @@ var pingLiteDetector = function() {
     })
 }
 
-pingLiteDetector()
+pingLightDetector()

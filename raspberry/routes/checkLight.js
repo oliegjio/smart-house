@@ -1,20 +1,20 @@
+const request = require('request')
+const requestPromise = require('request-promise')
+
 var checkLightResponse
 
 var init = (app) => {
   app.get('/checkLight', (request, response) => {
     checkLightResponse = response
-    http.get('http://192.168.0.5/checkLight', (response) => {
-      var data = ''
-
-      response.on('data', (chunk) => {
-        data += chunk
-      })
-
-      response.on('end', () => {
-        checkLightResponse.send(data)
-      })
+    
+    requestPromise({
+      method: 'GET',
+      uri: 'http://192.168.0.5/checkLight'
     })
-    .on('error', (error) => {
+    .then((body) => {
+      checkLightResponse.send(body)
+    })
+    .catch((error) => {
       console.log(error)
     })
   })

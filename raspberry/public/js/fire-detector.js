@@ -19,7 +19,7 @@ var updateFireLabel = function(value) {
 
 var pingFireDetector = function() {
     $.ajax({
-        url: 'http://192.168.0.1/checkFire'
+        url: 'http://192.168.0.1:8000/checkFire'
     })
     .done(function(response) {
         fireStatus = response

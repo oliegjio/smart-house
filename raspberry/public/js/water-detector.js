@@ -10,7 +10,7 @@ function updateLightProgress(value) {
 
 var pingWaterDetector = function() {
     $.ajax({
-        url: 'http://192.168.0.5/checkLight'
+        url: 'http://192.168.0.1:8000/checkLight'
     })
     .done(function(response) {
         waterStatus = response

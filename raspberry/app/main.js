@@ -1,8 +1,5 @@
 const express = require('express')
 const path = require('path')
-// const bodyParser = require('body-parser')
-// const request = require('request')
-// const requestPromise = require('request-promise')
 
 const port = 8000
 const app = express()

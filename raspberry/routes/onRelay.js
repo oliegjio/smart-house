@@ -1,20 +1,20 @@
+const request = require('request')
+const requestPromise = require('request-promise')
+
 var checkOnRelayResponse
 
 var init = (app) => {
   app.get('/onRelay', (request, response) => {
     checkOnRelayResponse = response
-    http.get('http://192.168.0.2/onRelay', (response) => {
-      var data = ''
 
-      response.on('data', (chunk) => {
-        data += chunk
-      })
-
-      response.on('end', () => {
-        checkOnRelayResponse.send(data)
-      })
+    requestPromise({
+      method: 'GET',
+      uri: 'http://192.168.0.2/onRelay'
     })
-    .on('error', (error) => {
+    .then((body) => {
+      checkOnRelayResponse.send(body)
+    })
+    .catch((error) => {
       console.log(error)
     })
   })

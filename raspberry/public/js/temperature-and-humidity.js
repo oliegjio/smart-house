@@ -36,7 +36,7 @@ var updateCharts = function() {
 
 var pintTandH = function() {
     $.ajax({
-        url: 'http://192.168.0.1/checkTandH'
+        url: 'http://192.168.0.1:8000/checkTandH'
     })
     .done(function(response) {
         var data = response.split(' ')

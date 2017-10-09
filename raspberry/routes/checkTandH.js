@@ -1,20 +1,20 @@
+const request = require('request')
+const requestPromise = require('request-promise')
+
 var checkTandHResponse
 
 var init = (app) => {
   app.get('/checkTandH', (request, response) => {
     checkTandHResponse = response
-    http.get('http://192.168.0.6/checkTandH', (response) => {
-      var data = ''
-
-      response.on('data', (chunk) => {
-        data += chunk
-      })
-
-      response.on('end', () => {
-        checkTandHResponse.send(data)
-      })
+    
+    requestPromise({
+      method: 'GET',
+      uri: 'http://192.168.0.6/checkTandH'
     })
-    .on('error', (error) => {
+    .then((body) => {
+      checkTandHResponse.send(body)
+    })
+    .catch((error) => {
       console.log(error)
     })
   })
