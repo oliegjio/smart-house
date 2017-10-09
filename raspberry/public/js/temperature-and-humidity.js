@@ -34,7 +34,7 @@ var updateCharts = function() {
     hChart.update()
 }
 
-var pintTandH = function() {
+var pingTandH = function() {
     $.ajax({
         url: 'http://192.168.0.1:8000/checkTandH'
     })
@@ -51,5 +51,5 @@ var pintTandH = function() {
     })
 }
 
-pintTandH()
-setTimeout(pintTandH, 1000)
+pingTandH()
+setTimeout(pingTandH, 1000)

@@ -6,17 +6,22 @@ var checkLightResponse
 var init = (app) => {
   app.get('/checkLight', (request, response) => {
     checkLightResponse = response
-    
-    requestPromise({
-      method: 'GET',
-      uri: 'http://192.168.0.5/checkLight'
-    })
-    .then((body) => {
-      checkLightResponse.send(body)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+
+    try {
+      requestPromise({
+        method: 'GET',
+        uri: 'http://192.168.0.5/checkLight'
+      })
+      .then((body) => {
+        checkLightResponse.send(body)
+      })
+      .catch((error) => {
+        // console.log(error)
+        checkLightResponse.end()
+      })
+    } catch (exception) {
+      console.log('Error!')
+    }
   })
 }
 

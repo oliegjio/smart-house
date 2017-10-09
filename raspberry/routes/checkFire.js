@@ -7,16 +7,21 @@ var init = (app) => {
   app.get('/checkFire', (request, response) => {
     checkFireResponse = response
 
-    requestPromise({
-      method: 'GET',
-      uri: 'http://192.168.0.4/checkfire'
-    })
-    .then((body) => {
-      checkFireResponse.send(body)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    try {
+      requestPromise({
+        method: 'GET',
+        uri: 'http://192.168.0.4/checkfire'
+      })
+      .then((body) => {
+        checkFireResponse.send(body)
+      })
+      .catch((error) => {
+        // console.log(error)
+        checkFireResponse.end()
+      })
+    } catch (exception) {
+      console.log('Error!')
+    }
   })
 }
 

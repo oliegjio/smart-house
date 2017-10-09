@@ -6,17 +6,22 @@ var checkTandHResponse
 var init = (app) => {
   app.get('/checkTandH', (request, response) => {
     checkTandHResponse = response
-    
-    requestPromise({
-      method: 'GET',
-      uri: 'http://192.168.0.6/checkTandH'
-    })
-    .then((body) => {
-      checkTandHResponse.send(body)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+
+    try {
+      requestPromise({
+        method: 'GET',
+        uri: 'http://192.168.0.6/checkTandH'
+      })
+      .then((body) => {
+        checkTandHResponse.send(body)
+      })
+      .catch((error) => {
+        // console.log(error)
+        checkTandHResponse.end()
+      })
+    } catch (exception) {
+      console.log('Error!')
+    }
   })
 }
 
