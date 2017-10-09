@@ -1,18 +1,22 @@
-var rnd = require('../app/helpers').rnd
+var checkTandHResponse
 
 var init = (app) => {
-  app.get('http://192.168.0.6/checkTandH', (request, response) => {
-    var data = response.split(' ')
+  app.get('/checkTandH', (request, response) => {
+    checkTandHResponse = response
+    http.get('http://192.168.0.6/checkTandH', (response) => {
+      var data = ''
 
-    var temperature = data[0]
-    var humidity = data[1]
+      response.on('data', (chunk) => {
+        data += chunk
+      })
 
-    if (temperature >= 50 || temperature <= -20 || humidity >= 80 || humidity <= 0) {
-      response.send(`${rnd(27, 31)} ${rnd(16, 20)}`)
-      return
-    }
-
-    response.send(response)
+      response.on('end', () => {
+        checkTandHResponse.send(data)
+      })
+    })
+    .on('error', (error) => {
+      console.log(error)
+    })
   })
 }
 

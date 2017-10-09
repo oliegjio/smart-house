@@ -1,6 +1,22 @@
+var checkFireResponse
+
 var init = (app) => {
-  app.get('http://192.168.0.4/checkFire', (request, response) => {
-    response.send(response)
+  app.get('/checkFire', (request, response) => {
+    checkFireResponse = response
+    http.get('http://192.168.0.4/checkFire', (response) => {
+      var data = ''
+
+      response.on('data', (chunk) => {
+        data += chunk
+      })
+
+      response.on('end', () => {
+        checkFireResponse.send(data)
+      })
+    })
+    .on('error', (error) => {
+      console.log(error)
+    })
   })
 }
 
