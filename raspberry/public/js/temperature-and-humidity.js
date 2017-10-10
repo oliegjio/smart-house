@@ -48,6 +48,9 @@ var pingTandH = function() {
       temperature = data[0]
       humidity = data[1]
 
+      if (temperature >= 60 || temperature <= -20) return
+      if (humidity >= 100 || humidity <= 0) return
+
       updateCharts()
     })
     .fail(function(error) {

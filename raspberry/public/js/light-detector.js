@@ -4,8 +4,10 @@ var lightSectionProgress = document.getElementsByClassName('light-section__progr
 var lightSectionValue = document.getElementsByClassName('light-section__value')[0]
 
 function updateLightProgress(value) {
-    lightSectionProgress.style.width = value + '%'
-    lightSectionValue.innerHTML = value + '%'
+  var percent = 100 - Math.floor(value / 1024 * 100)
+
+  lightSectionProgress.style.width = percent + '%'
+  lightSectionValue.innerHTML = percent + '%'
 }
 
 var pingLightDetector = function() {
@@ -19,7 +21,7 @@ var pingLightDetector = function() {
 
       lightStatus = response
 
-        updateLightProgress(lightStatus)
+      updateLightProgress(lightStatus)
     })
     .fail(function(error) {
         console.log(error)

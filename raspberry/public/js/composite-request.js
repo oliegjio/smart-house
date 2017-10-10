@@ -5,4 +5,4 @@ var compositeRequest = function() {
   pingTandH()
 }
 
-setInterval(compositeRequest, 10000)
+setInterval(compositeRequest, 3000)

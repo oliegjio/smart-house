@@ -1,19 +1,27 @@
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Smart House</title>
         <link rel='stylesheet' href='../css/main.css'>
         <link rel='stylesheet' href='../css/two-columns-wrapper.css'>
+        <link rel='stylesheet' href='../css/body-wrapper.css'>
+        <link rel='stylesheet' href='../css/t-and-h-wrapper.css'>
     </head>
     <body>
-        <div class='two-columns-wrapper'>
-            <% include sections/power-socket-section.ejs %>
-            <% include sections/light-section.ejs %>
-        </div>
-        <% include sections/t-and-h-section.ejs %>
+        <div class="body-wrapper">
+          <div class='two-columns-wrapper'>
+              <% include sections/power-socket-section.ejs %>
+              <% include sections/light-section.ejs %>
+          </div>
 
-        <div class='two-columns-wrapper'>
-          <% include sections/water-section.ejs %>
-          <% include sections/fire-section.ejs %>
+          <div class="t-and-h-wrapper">
+            <% include sections/t-and-h-section.ejs %>
+          </div>
+
+          <div class='two-columns-wrapper'>
+            <% include sections/water-section.ejs %>
+            <% include sections/fire-section.ejs %>
+          </div>
         </div>
 
         <script src='../node_modules/jquery/dist/jquery.min.js'></script>

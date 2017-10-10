@@ -3,9 +3,11 @@ var waterStatus
 var waterSectionProgress = document.getElementsByClassName('water-section__progress')[0]
 var waterSectionValue = document.getElementsByClassName('water-section__value')[0]
 
-function updateLightProgress(value) {
-    waterSectionProgress.style.width = value + '%'
-    waterSectionValue.innerHTML = value + '%'
+function updateWaterProgress(value) {
+  var percent = 100 - Math.floor(value / 1024 * 100)
+
+  waterSectionProgress.style.width = percent + '%'
+  waterSectionValue.innerHTML = percent + '%'
 }
 
 var pingWaterDetector = function() {
@@ -19,7 +21,7 @@ var pingWaterDetector = function() {
 
       waterStatus = response
 
-      updateLightProgress(waterStatus)
+      updateWaterProgress(waterStatus)
     })
     .fail(function(error) {
         console.log(error)

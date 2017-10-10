@@ -1,10 +1,10 @@
 .t-and-h-section {
     border-radius: 10px;
-    margin: 30px auto 30px auto;
-    width: 900px;
+    width: 870px;
     height: 560px;
     background-color: white;
-    padding: 20px;
+    /*padding: 20px;*/
+    /*margin: 0 auto;*/
 }
 
 .t-and-h-section__label {
