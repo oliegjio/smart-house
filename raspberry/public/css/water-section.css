@@ -1,21 +1,23 @@
 .water-section {
     border-radius: 10px;
     background-color: white;
-    height: 38px;
-    margin: 10px 5px 10px 10px;
-    padding: 20px;
-    width: 440px;
+    margin-right: 5px;
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex: 1 0 auto;
+    padding: 10px;
 }
 
 .water-section__label {
     font-size: 25px;
-    display: block;
-    width: 260px;
+    margin-right: 10px;
+    flex: 0 0 auto;
 }
 
 .water-section__progress-bar {
-  width: 320px;
+  flex: 1 0 auto;
+  height: 30px;
   background-color: lightgrey;
   border-radius: 7px;
   overflow: hidden;
@@ -23,9 +25,8 @@
 
 .water-section__progress {
   width: 1%;
-  height: 100px;
+  height: 30px;
   background-color: blue;
-  text-align: center;
 }
 
 .water-section__value {

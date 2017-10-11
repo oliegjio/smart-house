@@ -1,6 +1,5 @@
 .two-columns-wrapper{
     display: flex;
-    margin: 0 auto;
-    width: 890px;
-    height: 98px;
+    padding: 10px;
+    flex: 1 0 70px;
 }

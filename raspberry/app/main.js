@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, '..', 'public')))
 app.engine('ejs', require('ejs').renderFile)
 
 app.set('views', path.join(__dirname, '..', 'public', 'views'))
-app.set('view engine', 'html')
+app.set('view engine', 'ejs')
 
 require('../routes/checkTandH').init(app)
 require('../routes/onRelay').init(app)

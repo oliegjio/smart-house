@@ -1,11 +1,12 @@
 .fire-section {
     border-radius: 10px;
     background-color: lightgreen;
-    height: 38px;
-    padding: 20px;
-    width: 440px;
     text-align: center;
-    margin: 10px 10px 10px 5px;
+    margin-left: 5px;
+    display: flex;
+    flex: 1 0 auto;
+    justify-content: center;
+    align-items: center;
 }
 
 .fire-section__label {

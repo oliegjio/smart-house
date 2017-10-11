@@ -1,21 +1,23 @@
 .light-section {
     border-radius: 10px;
     background-color: white;
-    height: 38px;
-    margin: 10px 10px 10px 5px;
-    padding: 20px;
-    width: 440px;
+    margin-left: 5px;
     display: flex;
+    flex: 1 0 auto;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
 }
 
 .light-section__label {
     font-size: 25px;
-    display: block;
-    width: 130px;
+    flex: 0 0 auto;
+    margin-right: 10px;
 }
 
 .light-section__progress-bar {
-  width: 320px;
+  flex: 1 0 auto;
+  height: 30px;
   background-color: lightgrey;
   border-radius: 7px;
   overflow: hidden;
@@ -23,9 +25,8 @@
 
 .light-section__progress {
   width: 1%;
-  height: 100px;
+  height: 30px;
   background-color: orange;
-  text-align: center;
 }
 
 .light-section__value {
