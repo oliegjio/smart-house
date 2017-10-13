@@ -13,11 +13,9 @@ var init = (app) => {
         uri: 'http://192.168.0.5/checkLight'
       })
       .then((body) => {
-        console.log(body)
         checkLightResponse.send(body)
       })
       .catch((error) => {
-        // console.log(error)
         checkLightResponse.end()
       })
     } catch (exception) {

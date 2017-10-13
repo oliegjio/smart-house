@@ -13,11 +13,9 @@ var init = (app) => {
         uri: 'http://192.168.0.3/getWater'
       })
       .then((body) => {
-        console.log(body)
         checkWaterResponse.send(body)
       })
       .catch((error) => {
-        // console.log(error)
         checkWaterResponse.end()
       })
     } catch (exception) {

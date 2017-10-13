@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="body-wrapper">
-          <div class='two-columns-wrapper'>
+          <div class='wrapper'>
               <% include sections/power-socket-section.ejs %>
               <% include sections/light-section.ejs %>
           </div>
@@ -18,7 +18,7 @@
             <% include sections/t-and-h-section.ejs %>
           </div>
 
-          <div class='two-columns-wrapper'>
+          <div class='wrapper'>
             <% include sections/water-section.ejs %>
             <% include sections/fire-section.ejs %>
           </div>
@@ -27,12 +27,12 @@
         <script src='../node_modules/jquery/dist/jquery.min.js'></script>
         <script src='../node_modules/chart.js/dist/Chart.min.js'></script>
         <script src="../node_modules/bootbox/bootbox.min.js"></script>
-        <script src='../js/temperature-and-humidity.js'></script>
+        <script src='../js/check-t-and-h.js'></script>
         <script src='../js/charts.js'></script>
-        <script src='../js/power-socket.js'></script>
-        <script src='../js/fire-detector.js'></script>
-        <script src='../js/light-detector.js'></script>
-        <script src='../js/water-detector.js'></script>
+        <script src='../js/switch-relay.js'></script>
+        <script src='../js/check-fire.js'></script>
+        <script src='../js/check-light.js'></script>
+        <script src='../js/check-water.js'></script>
         <script src='../js/composite-request.js'></script>
     </body>
 </html>
